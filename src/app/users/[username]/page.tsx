@@ -19,6 +19,7 @@ import { Sheet, SheetTrigger } from "@/components/ui/sheet";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import EditUser from "@/components/EditUser";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const SingleUser = () => {
   return (
@@ -149,14 +150,28 @@ const SingleUser = () => {
             </p>
           </div>
           {/* CARDLIST CONTAINER */}
-          <div className="bg-primary-foreground p-4 rounded-lg">
+          <div className="bg-primary-foreground p-4 rounded-lg ">
             <CardList title="Recent Activity" />
           </div>
         </div>
         {/* RIGHT */}
         <div className="w-full xl:w-2/3 space-y-6">
           {/* USER CARD CONTAINER */}
-          <div className="bg-primary-foreground p-4 rounded-lg">User Card</div>
+          <div className="bg-primary-foreground p-4 rounded-lg space-y-2">
+            <div className="flex items-center gap-2">
+              <Avatar>
+                <AvatarImage src="https://avatars.githubusercontent.com/u/123456789?v=4" />
+                <AvatarFallback>JD</AvatarFallback>
+              </Avatar>
+              <h1 className="text-xl font-semibold"> John Doe</h1>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
+              ullam nostrum labore unde, in doloremque odit quae harum sapiente
+              ex ad, blanditiis sed molestias fuga totam eligendi aliquid itaque
+              similique?
+            </p>
+          </div>
           {/* CHART CONTAINER */}
           <div className="bg-primary-foreground p-4 rounded-lg">Chart</div>
         </div>
