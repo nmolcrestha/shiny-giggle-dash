@@ -1,9 +1,18 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown, MoreHorizontal } from "lucide-react";
+import { table } from "console";
+import { ArrowUpDown, Check, MoreHorizontal } from "lucide-react";
 
 export type Payment = {
   id: string;
@@ -14,6 +23,24 @@ export type Payment = {
 };
 
 export const columns: ColumnDef<Payment>[] = [
+  {
+    id: "select",
+    header: ({ table }) => (
+      <Checkbox
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        checked={
+          table.getIsAllPageRowsSelected() ||
+          (table.getIsSomePageRowsSelected() && "indeterminate")
+        }
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        checked={row.getIsSelected()}
+      />
+    ),
+  },
   {
     accessorKey: "status",
     header: "Status",
